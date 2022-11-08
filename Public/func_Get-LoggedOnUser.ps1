@@ -11,7 +11,7 @@ function Get-LoggedOnUser
      foreach ($comp in $ComputerName)
      {
          $output = @{ 'ComputerName' = $comp }
-         $output.UserName = (Get-WmiObject -Class win32_computersystem -ComputerName $comp).UserName
+         $output.UserName = (Get-CimInstance -Class win32_computersystem -ComputerName $comp).UserName
          [PSCustomObject]$output
      }
  }
